@@ -13,7 +13,8 @@ class TelegramBot:
     def send_tg_message(self, text: str):
         url = f"https://api.telegram.org/bot{self.token}/sendMessage"
         data = {
-            "chat_id": "213337828",
+            "chat_id":self.admin_tg_user_id,
+            #"chat_id": "5120471293",
             "text": text
         }
 
