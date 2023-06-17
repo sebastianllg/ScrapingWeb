@@ -15,9 +15,9 @@ chrome_driver.get("https://www.wikipedia.org/")
 print(chrome_driver.title)
 
 topics = [
-    "Alhambra",
-    "Generalife",
-    "gonzalez suarez"
+    "quito",
+    "LDU",
+    "Llerena"
 ]
 
 for t in topics:
