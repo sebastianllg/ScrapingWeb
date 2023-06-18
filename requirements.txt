@@ -2,3 +2,5 @@ selenium
 python-dotenv
 requests
 pymongo
+telegram
+telebot

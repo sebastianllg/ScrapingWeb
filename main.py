@@ -14,16 +14,14 @@ today = date.today()
 now = today.strftime('La fecha de hoy %d,%m,%Y \n')
 URL="https://www.mercadolibre.com.ec/"
 
+
 chrome_driver.get(URL)
 #chrome_driver.get("https://www.wikipedia.org/")
 print("----",chrome_driver.title,"-----")
 
 topics = [
-   # "carro",
-  #  "moto",
     "play station 5"
 ]
-
 for t in topics:
     search_box = chrome_driver.find_element(By.CLASS_NAME, "nav-search-input")
     #search_box = chrome_driver.find_element(By.ID, "searchInput")
@@ -45,7 +43,7 @@ for t in topics:
     chrome_driver.get(URL)
 
 
-print("fin")
+print("------fin------")
 chrome_driver.close()
 
 
