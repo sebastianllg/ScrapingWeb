@@ -5,10 +5,13 @@ from selenium.webdriver.common.by import By
 
 from telegram_bot import TelegramBot
 from mongodb import MongoDB
+from datetime import date
 chrome_driver = webdriver.Chrome()
 
 bot = TelegramBot()
 db = MongoDB()
+today = date.today()
+now = today.strftime('La fecha de hoy %d,%m,%Y \n')
 URL="https://www.mercadolibre.com.ec/"
 
 chrome_driver.get(URL)
@@ -32,9 +35,9 @@ for t in topics:
     content = chrome_driver.find_element(By.CLASS_NAME, "ui-search-layout__item")
     #content = chrome_driver.find_element(By.ID, "mw-content-text")
     print(content.text)
-    message: str = "Hola como estás\n"
+    message: str = f"La busqueda de {topics}\n"
     text = content.text
-    text1= message+text,
+    text1= message+now+text,
     text = text[:4000]
     bot.send_tg_message(text1)
     db.insert_wikipedia_text(title=t, text=text)
