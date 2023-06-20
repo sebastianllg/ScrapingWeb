@@ -17,8 +17,6 @@ class TelegramBot:
             "message": message,
             #"chat_id": "5120471293",
             "text": text
-
-
         }
 
         return requests.post(url=url, data=data).status_code
