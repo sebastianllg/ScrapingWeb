@@ -22,6 +22,8 @@ print("----",chrome_driver.title,"-----")
 topics = [
     "play station 5"
 ]
+a = 1
+
 for t in topics:
     search_box = chrome_driver.find_element(By.CLASS_NAME, "nav-search-input")
     #search_box = chrome_driver.find_element(By.ID, "searchInput")
@@ -29,18 +31,20 @@ for t in topics:
     search_button = chrome_driver.find_element(By.CLASS_NAME, "nav-search-btn")
     #search_button = chrome_driver.find_element(By.CSS_SELECTOR, '#search-form > fieldset > button > i')
     search_button.click()
-
-    content = chrome_driver.find_element(By.CLASS_NAME, "ui-search-layout__item")
-    #content = chrome_driver.find_element(By.ID, "mw-content-text")
-    print(content.text)
-    message: str = f"La busqueda de {topics}\n"
-    text = content.text
-    text1= message+now+text,
-    text = text[:4000]
-    bot.send_tg_message(text1)
-    db.insert_wikipedia_text(title=t, text=text)
-    time.sleep(2)
-    chrome_driver.get(URL)
+    while a < 5:
+        #content = chrome_driver.find_element(By.CLASS_NAME, "ui-search-layout__item")
+        content = chrome_driver.find_element(By.XPATH, f"/ html / body / main / div / div[2] / section / ol / li[{a}]")
+        #content = chrome_driver.find_element(By.ID, "mw-content-text")
+        print(content.text)
+        message: str = f"La busqueda de {topics}\n"
+        text = content.text
+        text1= message+now+text,
+        text = text[:4000]
+        bot.send_tg_message(text1)
+        db.insert_wikipedia_text(title=t, text=text)
+        time.sleep(2)
+        #chrome_driver.get(URL)
+        a = a + 1
 
 
 print("------fin------")
